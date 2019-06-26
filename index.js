@@ -3,6 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 app.use(jsonParser)
+
 const port = process.env.PORT || 4000
 const db = require('./db')
 const Team = require('./team/model')
