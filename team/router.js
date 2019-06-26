@@ -11,7 +11,7 @@
 
  router.post('/team', (req, res, next) => {
    Team.create(req.body)
-    .then(team => res.json({team}))
+    .then(team => res.send({team}))
     .catch(err => next(err))
  })
 
