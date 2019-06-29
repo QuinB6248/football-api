@@ -14,17 +14,18 @@ router.post('/logins', (req, res, next)=> {
     })
   }else {
     User
-      .findOne({
-          where: {
+      .findOne({ //sequelize method
+          where: { 
           email: req.body.email
           }
       })
       .then(entity => {
         if (!entity) {
           res.status(400).send({
-          message: 'User with that email does not exist'
+          message: 'USER OR PASSWORD IS INCORRECT'
           })
         }
+        //compare given password with password in database
         if (bcrypt.compareSync(req.body.password, entity.password)) {
        
           res.send({
@@ -55,7 +56,9 @@ router.get('/secret-endpoint', auth, (req, res) => {
   })
 })
 // router.get('/secret-endpoint', (req, res) => {
+        //checks if token is in the header and splits it at the space, puts it in an array
 //   const auth = req.headers.authorization && req.headers.authorization.split(' ')
+    
 //   console.log('AUTH', req.headers.authorization.split(' '))
 //   if (auth && auth[0] === 'Bearer' && auth[1]) {
 //     try {

@@ -13,7 +13,7 @@ function auth(req, res, next) {
           if (!user) return next('User does not exist')
           
 
-          req.user = user
+          req.user = user //add user to request
           console.log('REQUSER', req.user)
           next()
         })

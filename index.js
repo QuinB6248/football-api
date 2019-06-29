@@ -1,6 +1,7 @@
 const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+const app = express() 
+const bodyParser = require('body-parser')//middleware that allows us to read bodies from a request 
+//create bodyparser object
 const jsonParser = bodyParser.json()
 app.use(jsonParser)
 
@@ -14,7 +15,7 @@ const playerRouter = require('./player/router')
 const authRouter = require('./auth/router')
 const userRouter = require('./User/router')
 
-
+//configuring our server
 app.use(teamRouter)
 app.use(playerRouter)
 app.use(authRouter)
